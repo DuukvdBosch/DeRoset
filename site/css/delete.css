@@ -1,0 +1,32 @@
+body{
+    text-align: center;
+}
+
+input[type="submit"] {
+	background-color: black;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+    width: 100px;
+
+}
+
+input[type="submit"]:hover {
+	background-color: gray;
+}
+
+button{
+	background-color: black;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+    width: 100px;
+}
+
+button:hover {
+	background-color: gray;
+}
