@@ -27,7 +27,7 @@ if ($rowCount == 0) {
     $_SESSION['role'] = $user['role'];
 
     if ($_SESSION['role'] == 'employee') {
-        header('Location: employeedash.php');
+        header('Location: 2allorders.php');
     }
     if ($_SESSION['role'] == 'customer') {
         header('Location: 1bestellen.php');

@@ -3,12 +3,12 @@ require '0database.php';
 header('location:1overons.php');
 
 $sql = "
-  INSERT INTO bestelling (user_id, adress)
+  INSERT INTO order (user_id, address)
   VALUES (:user_id, :adress);
 
   SET @order_id = LAST_INSERT_ID();
 
-  INSERT INTO bestelling_content (product_id, order_id)
+  INSERT INTO order_content (order_id, ice_cream_id)
   VALUES (:product_id_1, @order_id),
          (:product_id_2, @order_id);
 ";

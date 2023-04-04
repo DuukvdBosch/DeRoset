@@ -1,23 +1,21 @@
 <?php
 
-include('employeenav.php');
+include('side-info.php');
 
 require '0database.php';
 
-$stmt = $conn->prepare("SELECT order.id, user.firstname, order.total_price, order.status, order.address as destination 
-						FROM `order` 
-						JOIN user 
-						ON user.id = `order`.user_id");
+$id = $_SESSION['user_id'];
+
+$stmt = $conn->prepare("SELECT * FROM `order` WHERE user_id = '$id'");
 $stmt->execute();
 $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $flavor = $stmt->fetchAll();
-
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Orders</title>
+	<title>My Orders</title>
 
     <link rel="stylesheet" href="css/allorders.css">
 </head>
@@ -28,7 +26,6 @@ $flavor = $stmt->fetchAll();
 			<thead>
 				<tr>
 					<th>Order ID</th>
-					<th>Klant Naam</th>
 					<th>Adres</th>
 					<th>Totale Prijs</th>
 					<th>Status</th>
@@ -41,12 +38,11 @@ $flavor = $stmt->fetchAll();
 				<tr>
                     <?php foreach($flavor as $flavor){ ?>
                         <td><?php echo $flavor['id'] ?></td>
-                        <td><?php echo $flavor['firstname'] ?></td>
-                        <td><?php echo $flavor['destination'] ?></td>
+                        <td><?php echo $flavor['address'] ?></td>
                         <td><?php echo $flavor['total_price'] ?></td>
                         <td><?php echo $flavor['status'] ?></td>
                         <?php } ?>
-					<td><a href="2order-details.php?id=<?php echo $flavor['id'] ?>"><button>Zie Details</button></a></td>
+					<td><a href="1order-details.php?id=<?php echo $flavor['id'] ?>"><button>Zie Details</button></a></td>
 					<td><a href="0processdelorder.php?id=<?php echo $flavor['id'] ?>"><button>Verwijderen</button></a></td>
 				</tr>
 			</tbody>

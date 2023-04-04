@@ -67,7 +67,7 @@ $flavor = $stmt->fetchAll();
       <div class="flavor-of-the-day">
         <strong>Smaak van de dag:</strong><br><br>
         <a href="flavor.php?id=3"><img class="img-flavor" src="images/smaak-aardbeien.jpg" alt="Ijs van den dag"></a><br><br>
-        <strong>Aardbei</strong>
+        <strong><?php echo $flavor['name'] ?></strong>
       </div>
 
       <div class="box3">
